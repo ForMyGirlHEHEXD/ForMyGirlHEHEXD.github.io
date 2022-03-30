@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Message, sha256 } from 'js-sha256';
+import { sha256 } from 'js-sha256';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +10,8 @@ export class AppComponent implements OnInit
 {
   password: string = "882e66eb2fb78060b68d3b1306bd6cc7349e6d55bf468a2858e32f208a07b1df";
   isAllowed: boolean = false;
-  title = 'Hi';
+
+  constructor() {};
 
   ngOnInit(): void
   {
@@ -22,7 +23,7 @@ export class AppComponent implements OnInit
         input = sha256(input)
         if(input == this.password)
         {
-          this.isAllowed = !this.isAllowed;
+          this.isAllowed = true;
         }
       }
     }
