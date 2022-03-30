@@ -8,7 +8,7 @@ import { sha256 } from 'js-sha256';
 })
 export class AppComponent implements OnInit
 {
-  password: string = "882e66eb2fb78060b68d3b1306bd6cc7349e6d55bf468a2858e32f208a07b1df";
+  password: string = "ee70f2d7f9ce2c4c8aa36cf3ca0005bdfd70b2bc0f78372c5e7c2c3c7ab21588";
   isAllowed: boolean = false;
 
   constructor() {};
