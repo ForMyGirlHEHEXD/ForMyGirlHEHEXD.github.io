@@ -28,12 +28,13 @@ export class PlanADateComponent implements OnInit
 
   activities: any[] = 
   [
-    {value: 'chillBoyfriend', viewValue: 'Chill at boyfriend\'s place'},
-    {value: 'chillGirlfriend', viewValue: 'Chill at girlfriend\'s place'},
+    {value: 'chillBoyfriend', viewValue: '👩🏻‍🤝‍👨🏼Chill at boyfriend\'s place'},
+    {value: 'chillGirlfriend', viewValue: '👩🏻‍🤝‍👨🏼Chill at girlfriend\'s place'},
     {value: 'minigolf', viewValue: '⛳Minigolf'},
     {value: 'golf', viewValue: '🏌️‍♀️Golf'},
     {value: 'swim', viewValue: '🏊Swim'},
     {value: 'cinema', viewValue: '🎥Cinema'},
+    {value: 'mallOfSwitzerland', viewValue: '🏰Mall of Switzerland'},
   ];
   foodLocationGroups: any[] = 
   [

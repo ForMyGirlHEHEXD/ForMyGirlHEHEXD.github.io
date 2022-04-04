@@ -4,10 +4,6 @@
 
   <form [formGroup]="dateForm" action="https://formspree.io/f/mwkynyjg" method="post" (ngSubmit)="onSubmit()" [class.active]="sentForm" class="hide">
     <div>
-      <div class="hide" [class.active]="true">
-        <input type="email" name="_replyto" value="chiarabr03@gmail.com">
-        <textarea name="body">{{body}}</textarea>
-      </div>
       <label>What</label>
       <mat-form-field appearance="fill">
         <mat-label>Activity</mat-label>
@@ -88,13 +84,16 @@
   
   <span>* = required field</span>
   <br/>
-  <button mat-raised-button color="accent" disabled="{{!dateForm.valid}}" type="submit">Send</button>
-
+  <form action="https://formspree.io/f/mwkynyjg" method="post">
+    <input type="email" name="_replyto" value="chiabran@365.kbz-zug.ch"  class="hideForm">
+    <textarea name="body" class="hideForm">{{body}}</textarea>  
+    <button mat-raised-button color="accent" disabled="{{!dateForm.valid}}" type="submit">Send</button>
+  </form>
   </form>
   <div class="overlay" *ngIf="sentForm">
     <h2>Thanks for planning a date with your boyfriend!❤️</h2>
     <br/>
-    <p>{{body}}</p>
+    <pre>{{body}}</pre>
   </div>
 </div>
 

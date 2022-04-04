@@ -8,7 +8,7 @@ import { Subject } from 'rxjs/internal/Subject';
 export class AllowanceService 
 {
   password: string = "ee70f2d7f9ce2c4c8aa36cf3ca0005bdfd70b2bc0f78372c5e7c2c3c7ab21588";
-  isAllowed: boolean = true;
+  isAllowed: boolean = false;
   allowanceChange: Subject<boolean> = new Subject<boolean>();
   constructor() 
   {
