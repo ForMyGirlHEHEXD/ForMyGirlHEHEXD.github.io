@@ -1,6 +1,6 @@
 <div class="container">
   <h2 [class.active]="sentForm" class="hide">Plan a date!</h2>
-  <p [class.active]="sentForm" class="hide">Select everything you want/need and your boyfriend will try his best to fulfill all your needs!</p>
+  <p [class.active]="sentForm" class="hide">Select everything you want/need and your boyfriend will try his best to fulfill all your needs!❤️</p>
 
   <form [formGroup]="dateForm" action="https://formspree.io/f/mwkynyjg" method="post" (ngSubmit)="onSubmit()" [class.active]="sentForm" class="hide">
     <div>
@@ -86,14 +86,14 @@
   <br/>
   <form action="https://formspree.io/f/mwkynyjg" method="post">
     <input type="email" name="_replyto" value="chiarabranca@icloud.com"  class="hideForm">
-    <textarea name="body" class="hideForm">{{body}}</textarea>  
+    <textarea name="body" class="hideForm">{{body | json}}</textarea>  
     <button mat-raised-button color="accent" disabled="{{!dateForm.valid}}" type="submit">Send</button>
   </form>
   </form>
   <div class="overlay" *ngIf="sentForm">
     <h2>Thanks for planning a date with your boyfriend!❤️</h2>
     <br/>
-    <pre>{{body}}</pre>
+    <pre>{{body | json}}</pre>
   </div>
 </div>
 
