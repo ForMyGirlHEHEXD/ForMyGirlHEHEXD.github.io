@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { sha256 } from 'js-sha256';
+import { AllowanceService } from './allowance.service';
 
 @Component({
   selector: 'app-root',
@@ -8,25 +9,14 @@ import { sha256 } from 'js-sha256';
 })
 export class AppComponent implements OnInit
 {
-  password: string = "ee70f2d7f9ce2c4c8aa36cf3ca0005bdfd70b2bc0f78372c5e7c2c3c7ab21588";
   isAllowed: boolean = false;
 
-  constructor() {};
+  constructor(private allowanceService: AllowanceService) {};
 
   ngOnInit(): void
   {
-    do
-    {
-      var input = prompt("Please enter the password:")
-      if(input != null && input != '')
-      {
-        input = sha256(input)
-        if(input == this.password)
-        {
-          this.isAllowed = true;
-        }
-      }
-    }
-    while(!this.isAllowed)
+    this.allowanceService.allowanceChange.subscribe((allowance: boolean) => 
+    {this.isAllowed = allowance;});
+    this.allowanceService.checkCredentials();
   }
 }
