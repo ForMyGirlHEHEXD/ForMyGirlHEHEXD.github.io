@@ -1,0 +1,61 @@
+<div class="container">
+  <h2>Plan a date!</h2>
+  <p>Select everything you want/need and your boyfriend will try his best to fulfill all your needs!</p>
+
+  <form [formGroup]="dateForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label>What</label>
+      <mat-form-field appearance="fill" >
+      <mat-label>Activites</mat-label>
+      <mat-select formControlName="location">
+          <mat-option *ngFor="let actitity of activities" [value]="actitity.value" >
+            {{actitity.viewValue}}
+          </mat-option>
+      </mat-select>   
+    </mat-form-field> 
+  </div>
+
+    <div>
+      <label>When</label>
+      <mat-form-field appearance="fill">
+        <input matInput type="datetime-local" placeholder="start date" formControlName="date">
+      </mat-form-field>
+    </div>
+
+    <div>
+      <label>Food?</label>
+      <mat-checkbox class="example-margin" formControlName="food" [(ngModel)]="wantsFood"></mat-checkbox>
+    </div>
+
+    <mat-radio-group aria-label="WhenFood" *ngIf="wantsFood">
+      <mat-radio-button value="before">Before</mat-radio-button>
+      <mat-radio-button value="during">During</mat-radio-button>
+      <mat-radio-button value="after">After</mat-radio-button>
+    </mat-radio-group>
+
+    <div *ngIf="wantsFood">
+      <label>Where</label>
+      <mat-form-field appearance="fill" >
+      <mat-label>Food/Place</mat-label>
+      <mat-select formControlName="location">
+        <mat-optgroup *ngFor="let group of foodLocationGroups" [label]="group.name" [disabled]="group.disabled">
+          <mat-option *ngFor="let location of group.location" [value]="location.value" >
+            {{location.viewValue}}
+          </mat-option>
+        </mat-optgroup>
+      </mat-select>   
+    </mat-form-field> 
+  </div>
+
+  <div>
+    <label>Anything else?</label>
+    <mat-form-field appearance="fill">
+      <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+    </mat-form-field>
+  </div>
+  
+
+  <button mat-raised-button color="accent" type="submit">Send</button>
+
+  </form>
+</div>
