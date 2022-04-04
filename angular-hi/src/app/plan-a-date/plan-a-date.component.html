@@ -86,8 +86,8 @@
   <br/>
   <form action="https://formspree.io/f/mwkynyjg" method="post">
     <input type="email" name="_replyto" value="chiarabranca@icloud.com"  class="hideForm">
-    <textarea name="body" class="hideForm">{{body | json}}</textarea>
-    <button mat-raised-button color="accent" disabled="{{!dateForm.valid}}" type="submit" ((mousedown))="onSubmit()">Send</button>
+    <textarea name="body" class="hideForm">{{body}}</textarea>
+    <button mat-raised-button color="accent" disabled="{{!dateForm.valid}}" type="submit">Send</button>
   </form>
   {{body}}
   </form>

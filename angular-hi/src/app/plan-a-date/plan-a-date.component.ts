@@ -98,6 +98,7 @@ export class PlanADateComponent implements OnInit
       this.exactLocation = marker.getPosition()?.lat() + ", " + marker.getPosition()?.lng();
     });
   
+    this.onChanges();
   }
 
   body: string = ""
@@ -106,6 +107,18 @@ export class PlanADateComponent implements OnInit
     Object.keys(this.dateForm.value).forEach((key: string) => 
     {
       this.body += key + ": " +this.dateForm.value[key] + "\n";
+    });
+  }
+
+  onChanges(): void
+  {
+    this.dateForm.valueChanges.subscribe(val => 
+      {
+        this.body = "";
+        Object.keys(this.dateForm.value).forEach((key: string) => 
+        {
+          this.body += key + ": " +this.dateForm.value[key] + "\n";
+        });
     });
   }
 }
