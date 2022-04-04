@@ -103,7 +103,6 @@ export class PlanADateComponent implements OnInit
   body: string = ""
   onSubmit(): void
   {
-    this.sentForm = !this.sentForm;
     Object.keys(this.dateForm.value).forEach((key: string) => 
     {
       this.body += key + ": " +this.dateForm.value[key] + "\n";
