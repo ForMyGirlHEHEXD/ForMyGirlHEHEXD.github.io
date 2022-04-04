@@ -17,6 +17,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule  } from '@angular/material/input';
 import {MatRadioModule} from '@angular/material/radio';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+
 
 
 @NgModule({
@@ -38,7 +40,8 @@ import {MatRadioModule} from '@angular/material/radio';
     MatButtonModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatRadioModule
+    MatRadioModule,
+    MatAutocompleteModule
   ],
   providers: [AllowanceService],
   bootstrap: [AppComponent]

@@ -20,21 +20,19 @@ export class AllowanceService
 
   checkCredentials(): void
   {
-    // do
-    // {
-    //   var input = prompt("Please enter the password:")
-    //   if(input != null && input != '')
-    //   {
-    //     input = sha256(input)
-    //     if(input == this.password)
-    //     {
-    //       this.isAllowed = true;
-    //       this.allowanceChange.next(this.isAllowed);
-    //     }
-    //   }
-    // }
-    // while(!this.isAllowed)
-    this.isAllowed = true;
+    do
+    {
+      var input = prompt("Please enter the password:")
+      if(input != null && input != '')
+      {
+        input = sha256(input)
+        if(input == this.password)
+        {
+          this.isAllowed = true;
           this.allowanceChange.next(this.isAllowed);
+        }
+      }
+    }
+    while(!this.isAllowed)
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import {MatSelectModule} from '@angular/material/select';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import LocationPicker from "location-picker";
+
 
 
 @Component({
@@ -10,12 +11,19 @@ import {MatSelectModule} from '@angular/material/select';
 })
 export class PlanADateComponent implements OnInit 
 {
+  sentForm: boolean = false;
+  exactLocation: string = "";
+  locationPicker!: LocationPicker;
   wantsFood: boolean = false;
   dateForm = this.formBuilder.group(
     {
-      date: '',
+      what: ['', Validators.required],
+      date: ['', Validators.required],
       food: false,
-      location: ''
+      whenFood: '',
+      location: '',
+      exactLocation: '',
+      notes: '',
     });
 
   activities: any[] = 
@@ -25,7 +33,7 @@ export class PlanADateComponent implements OnInit
     {value: 'minigolf', viewValue: '⛳Minigolf'},
     {value: 'golf', viewValue: '🏌️‍♀️Golf'},
     {value: 'swim', viewValue: '🏊Swim'},
-    {value: 'swim', viewValue: 'Swim'},
+    {value: 'cinema', viewValue: '🎥Cinema'},
   ];
   foodLocationGroups: any[] = 
   [
@@ -55,17 +63,49 @@ export class PlanADateComponent implements OnInit
     }
   ];
 
+  dateFormKeys: string[] = Object.keys(this.dateForm.value);
+
   constructor(private formBuilder: FormBuilder) 
   {
   }
 
-  ngOnInit(): void 
+  ngOnInit(): void
   {
-
+    const myLatlng = { lat: 47.1846998, lng: 8.4736975 };
+  
+    const map = new google.maps.Map(
+      document.getElementById("map") as HTMLElement,
+      {
+        zoom: 4,
+        center: myLatlng,
+      }
+    );
+  
+    const marker = new google.maps.Marker({
+      position: myLatlng,
+      map,
+      title: "Click to zoom",
+    });
+  
+    map.addListener("drag", () => 
+    {
+      marker.setPosition(map.getCenter());
+    });
+  
+    map.addListener("dragend", () => 
+    {
+      this.exactLocation = marker.getPosition()?.lat() + ", " + marker.getPosition()?.lng();
+    });
+  
   }
 
+  body: string = ""
   onSubmit(): void
   {
-    console.log(this.dateForm.value);
+    this.sentForm = !this.sentForm;
+    Object.keys(this.dateForm.value).forEach((key: string) => 
+    {
+      this.body += key + ": " +this.dateForm.value[key] + "\n";
+    });
   }
 }
